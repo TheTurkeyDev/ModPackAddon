@@ -15,7 +15,7 @@ public class MPAArmor
 	
 	public static void loadArmor()
 	{
-		miscArmor = EnumHelper.addArmorMaterial("Misc_Armor_Material", 0, new int[] {0, 0, 0, 0}, 0);
+		miscArmor = EnumHelper.addArmorMaterial("Misc_Armor_Material", 100, new int[] {0, 0, 0, 0}, 0);
 		
 		spaceHelm = (new SpaceHelmet("Space_Helmet", miscArmor, 0)).setTextureName(MPACore.MODID + ":space_helmet");
 		

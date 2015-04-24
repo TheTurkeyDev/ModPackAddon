@@ -46,6 +46,7 @@ public class BlockListener
 				{
 					e.world.spawnEntityInWorld(new EntityItem(e.world,e.x,e.y,e.z,new ItemStack(b,1,e.blockMetadata)));
 					e.world.setBlockToAir(e.x, e.y, e.z);
+					e.getPlayer().inventory.getCurrentItem().damageItem(1, e.getPlayer());
 				}
 			}
 		}

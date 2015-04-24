@@ -22,7 +22,7 @@ import enviromine.trackers.EnviroDataTracker;
 public class SpaceHelmet extends ItemArmor
 {
 
-	private int maxAir = 1000;
+	public static int maxAir = 1000;
 
 	private int count = 0;
 
@@ -46,15 +46,15 @@ public class SpaceHelmet extends ItemArmor
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool) 
 	{
-		list.add("Air percent left: " + (int)(((double)this.getDamage(stack)/(double)this.maxAir)*100) + "%");
+		list.add("Air percent left: " + (100-(int)(((double)this.getDamage(stack)/(double)SpaceHelmet.maxAir)*100)) + "%");
 	}
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) 
 	{
-		if(world.isRemote)
+		if(!world.isRemote)
 		{
-			int airHeld = this.getDamage(itemStack);
+			int airHeld = SpaceHelmet.maxAir - this.getDamage(itemStack);
 			if(itemStack.getItem().equals(MPAArmor.spaceHelm))
 			{
 				int blocks = 0;
@@ -75,8 +75,8 @@ public class SpaceHelmet extends ItemArmor
 					if(count >= 30)
 					{
 						airHeld += MPASettings.airReplenish;
-						if(airHeld > this.maxAir)
-							airHeld = this.maxAir;
+						if(airHeld > SpaceHelmet.maxAir)
+							airHeld = SpaceHelmet.maxAir;
 						count = 0;
 					}
 				}
@@ -106,7 +106,7 @@ public class SpaceHelmet extends ItemArmor
 					}
 				}
 			}
-			this.setDamage(itemStack, airHeld);
+			this.setDamage(itemStack, (SpaceHelmet.maxAir - airHeld));
 		}
 	}
 
