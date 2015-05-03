@@ -13,3 +13,5 @@ LICENSE-fml.txt
 CREDITS-fml.txt
 forge-1.7.10-10.13.2.1230-changelog.txt
 usernamecache.json
+bin/
+.gradle/
