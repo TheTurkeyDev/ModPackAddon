@@ -6,7 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -14,6 +13,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 import com.turkey.mpaddon.MPACore;
+import com.turkey.mpaddon.blocks.MPABlocks;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -68,6 +68,7 @@ public class LockedDoorItem extends Item
     public void registerIcons(IIconRegister register)
     {
         super.registerIcons(register);
+        this.icon2 = register.registerIcon(MPACore.MODID + "doorItem1");
         this.icon2 = register.registerIcon(MPACore.MODID + "doorItem2");
         this.icon3 = register.registerIcon(MPACore.MODID + "doorItem3");
     }
@@ -84,11 +85,11 @@ public class LockedDoorItem extends Item
             Block block;
 
             if (this.getDamage(stack) == 1)
-                block = Blocks.wooden_door;
+                block = MPABlocks.lockedDoor1;
             else if(this.getDamage(stack) == 2)
-                block = Blocks.iron_door;
+                block = MPABlocks.lockedDoor2;
             else
-            	block = Blocks.iron_door;
+            	block = MPABlocks.lockedDoor3;
 
             if (player.canPlayerEdit(z, y, z, side, stack) && player.canPlayerEdit(x, y + 1, z, side, stack))
             {
