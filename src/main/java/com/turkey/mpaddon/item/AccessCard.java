@@ -12,20 +12,20 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
-public class AcessCard extends Item
+public class AccessCard extends Item
 {
     @SideOnly(Side.CLIENT)
     private IIcon icon2;
     @SideOnly(Side.CLIENT)
     private IIcon icon3;
 
-    public AcessCard()
+    public AccessCard()
     {
         this.setHasSubtypes(true);
         this.setMaxDamage(0);
         this.maxStackSize = 1;
         this.setCreativeTab(MPACore.modTab);
-        super.setTextureName(MPACore.MODID + ":acessCard1");
+        super.setTextureName(MPACore.MODID + ":accessCard1");
     }
 
     /**
@@ -34,7 +34,7 @@ public class AcessCard extends Item
      */
     public String getUnlocalizedName(ItemStack stack)
     {
-        return stack.getItemDamage() == 1 ? "item.acessCard1" : stack.getItemDamage() == 2 ? "item.acessCard2" :  "item.acessCard3";
+        return stack.getItemDamage() == 0 ? "item.accessCard1" : stack.getItemDamage() == 1 ? "item.accessCard2" :  "item.accessCard3";
     }
 
     /**
@@ -55,15 +55,15 @@ public class AcessCard extends Item
     @SideOnly(Side.CLIENT)
     public IIcon getIconFromDamage(int damage)
     {
-        return damage == 1 ? this.icon2 : damage == 2 ? this.icon2 : super.getIconFromDamage(damage);
+        return damage == 0 ? this.itemIcon : damage == 1 ? this.icon2 : this.icon3;
     }
 
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister register)
     {
         super.registerIcons(register);
-        this.icon2 = register.registerIcon(MPACore.MODID + ":acessCard2");
-        this.icon3 = register.registerIcon(MPACore.MODID + "acessCard3");
+        this.icon2 = register.registerIcon(MPACore.MODID + ":accessCard2");
+        this.icon3 = register.registerIcon(MPACore.MODID + ":accessCard3");
     }
   
 }

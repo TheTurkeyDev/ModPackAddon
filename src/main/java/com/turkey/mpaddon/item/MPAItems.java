@@ -6,23 +6,23 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class MPAItems
 {
 	public static Item podirt;
-	public static Item acessCard;
-	public static Item doorItem1;
-	public static Item doorItem2;
-	public static Item doorItem3;
+	public static Item accessCard;
+	public static Item lockedDoor1;
+	public static Item lockedDoor2;
+	public static Item lockedDoor3;
 	
 	public static void loadItems()
 	{
 		podirt = new PieceOfDirt();
-		acessCard  = new AcessCard();
-		doorItem1 = new LockedDoorItem();
-		doorItem2 = new LockedDoorItem();
-		doorItem3 = new LockedDoorItem();
+		accessCard  = new AccessCard();
+		lockedDoor1 = new LockedDoorItem(1);
+		lockedDoor2 = new LockedDoorItem(2);
+		lockedDoor3 = new LockedDoorItem(3);
 		
 		GameRegistry.registerItem(podirt, "Peice_of_dirt");
-		GameRegistry.registerItem(acessCard, "Acess_Card");
-		GameRegistry.registerItem(doorItem1, "Door_Item1");
-		GameRegistry.registerItem(doorItem2, "Door_Item2");
-		GameRegistry.registerItem(doorItem3, "Door_Item3");
+		GameRegistry.registerItem(accessCard, "Access_Card");
+		GameRegistry.registerItem(lockedDoor1, "Locked_Door1");
+		GameRegistry.registerItem(lockedDoor2, "Locked_Door2");
+		GameRegistry.registerItem(lockedDoor3, "Locked_Door3");
 	}
 }
