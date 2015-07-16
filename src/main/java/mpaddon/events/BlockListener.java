@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
-import pneumaticCraft.common.block.Blockss;
+import pneumaticCraft.common.block.BlockFluidEtchingAcid;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import crazypants.enderio.fluid.BlockFluidEio;
 
@@ -96,7 +96,7 @@ public class BlockListener
 	                if (!player.canPlayerEdit(i, j, k, movingobjectposition.sideHit, stack))
 	                    return;
 
-	                if ((world.getBlock(i, j, k) == Blockss.etchingAcid) || (world.getBlock(i, j, k) instanceof BlockFluidEio))
+	                if ((world.getBlock(i, j, k) instanceof BlockFluidEtchingAcid) || (world.getBlock(i, j, k) instanceof BlockFluidEio))
 	                   e.setCanceled(true);
 	            }
 	        }
