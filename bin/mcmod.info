@@ -2,8 +2,8 @@
 {
   "modid": "modpackaddon",
   "name": "Modpack Addon",
-  "description": "An mod addon to the modpack",
-  "version": "0.1",
+  "description": "An mod addon to Aftermath",
+  "version": "0.5",
   "mcversion": "1.7.10",
   "url": "",
   "updateUrl": "",

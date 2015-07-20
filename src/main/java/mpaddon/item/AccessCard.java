@@ -14,9 +14,7 @@ import net.minecraft.util.IIcon;
 public class AccessCard extends Item
 {
     @SideOnly(Side.CLIENT)
-    private IIcon icon2;
-    @SideOnly(Side.CLIENT)
-    private IIcon icon3;
+    private IIcon[] icons;
 
     public AccessCard()
     {
@@ -24,7 +22,7 @@ public class AccessCard extends Item
         this.setMaxDamage(0);
         this.maxStackSize = 1;
         this.setCreativeTab(MPACore.modTab);
-        super.setTextureName(MPACore.MODID + ":accessCard1");
+        icons = new IIcon[5];
     }
 
     /**
@@ -33,7 +31,7 @@ public class AccessCard extends Item
      */
     public String getUnlocalizedName(ItemStack stack)
     {
-        return stack.getItemDamage() == 0 ? "item.accessCard1" : stack.getItemDamage() == 1 ? "item.accessCard2" :  "item.accessCard3";
+        return stack.getItemDamage() == 0 ? "item.accessCard1" : stack.getItemDamage() == 1 ? "item.accessCard2" :  stack.getItemDamage() == 2 ? "item.accessCard3" : stack.getItemDamage() == 3 ? "item.accessCard4" : "item.accessCard5";
     }
 
     /**
@@ -46,6 +44,8 @@ public class AccessCard extends Item
     	list.add(new ItemStack(item, 1, 0));
     	list.add(new ItemStack(item, 1, 1));
     	list.add(new ItemStack(item, 1, 2));
+    	list.add(new ItemStack(item, 1, 3));
+    	list.add(new ItemStack(item, 1, 4));
     }
 
     /**
@@ -54,15 +54,18 @@ public class AccessCard extends Item
     @SideOnly(Side.CLIENT)
     public IIcon getIconFromDamage(int damage)
     {
-        return damage == 0 ? this.itemIcon : damage == 1 ? this.icon2 : this.icon3;
+        return icons[damage];
     }
 
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister register)
     {
         super.registerIcons(register);
-        this.icon2 = register.registerIcon(MPACore.MODID + ":accessCard2");
-        this.icon3 = register.registerIcon(MPACore.MODID + ":accessCard3");
+        icons[0] = register.registerIcon(MPACore.MODID + ":accessCard1");
+        icons[1] = register.registerIcon(MPACore.MODID + ":accessCard2");
+        icons[2] = register.registerIcon(MPACore.MODID + ":accessCard3");
+        icons[3] = register.registerIcon(MPACore.MODID + ":accessCard4");
+        icons[4] = register.registerIcon(MPACore.MODID + ":accessCard5");
     }
   
 }

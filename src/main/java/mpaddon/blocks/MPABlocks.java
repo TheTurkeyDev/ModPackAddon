@@ -14,6 +14,8 @@ public class MPABlocks
 	public static Block lockedDoor1;
 	public static Block lockedDoor2;
 	public static Block lockedDoor3;
+	public static Block lockedDoor4;
+	public static Block lockedDoor5;
 	
 	private static MPARenderingHandler renderingHandler;
 
@@ -28,10 +30,14 @@ public class MPABlocks
 		lockedDoor1 = new LockedDoor().setBlockName("Locked_Door_Tier1").setBlockTextureName(MPACore.MODID + ":door_tier1");
 		lockedDoor2 = new LockedDoor().setBlockName("Locked_Door_Tier2").setBlockTextureName(MPACore.MODID + ":door_tier2");
 		lockedDoor3 = new LockedDoor().setBlockName("Locked_Door_Tier3").setBlockTextureName(MPACore.MODID + ":door_tier3");
+		lockedDoor4 = new LockedDoor().setBlockName("Locked_Door_Tier4").setBlockTextureName(MPACore.MODID + ":door_tier4");
+		lockedDoor5 = new LockedDoor().setBlockName("Locked_Door_Tier5").setBlockTextureName(MPACore.MODID + ":door_tier5");
 		
 		GameRegistry.registerBlock(foreverFire, "Forever_Fire");
 		GameRegistry.registerBlock(lockedDoor1, "Locked_Door_Tier1");
 		GameRegistry.registerBlock(lockedDoor2, "Locked_Door_Tier2");
 		GameRegistry.registerBlock(lockedDoor3, "Locked_Door_Tier3");
+		GameRegistry.registerBlock(lockedDoor4, "Locked_Door_Tier4");
+		GameRegistry.registerBlock(lockedDoor5, "Locked_Door_Tier5");
 	}
 }

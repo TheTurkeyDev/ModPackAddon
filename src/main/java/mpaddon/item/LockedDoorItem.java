@@ -39,8 +39,12 @@ public class LockedDoorItem extends Item
                 block = MPABlocks.lockedDoor1;
             else if(doorNum == 2)
                 block = MPABlocks.lockedDoor2;
+            else if(doorNum == 3)
+                block = MPABlocks.lockedDoor3;
+            else if(doorNum == 4)
+                block = MPABlocks.lockedDoor4;
             else
-            	block = MPABlocks.lockedDoor3;
+            	block = MPABlocks.lockedDoor5;
 
             if (player.canPlayerEdit(z, y, z, side, stack) && player.canPlayerEdit(x, y + 1, z, side, stack))
             {
