@@ -17,3 +17,4 @@ bin/
 .gradle/
 *.log
 options.txt
+screenshots/

@@ -5,8 +5,6 @@ import java.util.Random;
 
 import mpaddon.item.AccessCard;
 import mpaddon.item.MPAItems;
-import net.malisis.doors.door.DoorRegistry;
-import net.malisis.doors.door.DoorState;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -49,8 +47,8 @@ public class LockedDoor extends BlockDoor
 				world.setBlockMetadataWithNotify(x, y - 1, z, j1, 2);
 				world.markBlockRangeForRenderUpdate(x, y - 1, z, x, y, z);
 			}
-			String path = DoorRegistry.getSound("pneumatic_door").getSoundPath(open ? DoorState.OPENING : DoorState.CLOSING);
-			world.playSoundEffect(x, y, z, path, 1F, 1F);
+			//String path = DoorRegistry.getSound("pneumatic_door").getSoundPath(open ? DoorState.OPENING : DoorState.CLOSING);
+			//world.playSoundEffect(x, y, z, path, 1F, 1F);
 			return true;
 		}
 		return false;

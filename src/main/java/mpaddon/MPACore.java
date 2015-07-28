@@ -38,7 +38,7 @@ public class MPACore
 	public static CreativeTabs modTab = new CreativeTabs(MODID) {
 		public Item getTabIconItem()
 		{
-			return Item.getItemFromBlock(MPABlocks.foreverFire);
+			return MPAArmor.basicSpaceHelm;
 		}
 	};
 	public static Logger logger;
