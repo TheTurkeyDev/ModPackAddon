@@ -15,6 +15,8 @@ public class MPAItems
 	
 	public static Item plasticBottle;
 	
+	public static Item airTank;
+	
 	public static void loadItems()
 	{
 		podirt = new PieceOfDirt();
@@ -27,6 +29,8 @@ public class MPAItems
 		
 		plasticBottle = new PlasticBottle();
 		
+		airTank = new AirTank();
+		
 		GameRegistry.registerItem(podirt, "Peice_of_dirt");
 		GameRegistry.registerItem(accessCard, "Access_Card");
 		GameRegistry.registerItem(lockedDoor1, "Locked_Door1");
@@ -35,5 +39,6 @@ public class MPAItems
 		GameRegistry.registerItem(lockedDoor4, "Locked_Door4");
 		GameRegistry.registerItem(lockedDoor5, "Locked_Door5");
 		GameRegistry.registerItem(plasticBottle, "Plastic_Bottle");
+		GameRegistry.registerItem(airTank, "Air_Tank");
 	}
 }

@@ -2,5 +2,7 @@ package mpaddon;
 
 public class MPASettings 
 {
-	public static double airReplenish;
+	public static int airReplenish;
+	
+	public static int airTankCapcity;
 }

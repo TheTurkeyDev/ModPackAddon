@@ -11,11 +11,13 @@ import mpaddon.tools.MPATools;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fluids.FluidContainerRegistry;
 
 import org.apache.logging.log4j.Logger;
 
-import cpw.mods.fml.common.FMLCommonHandler;
+import solarcraft.core.SolarCraft;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -28,7 +30,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 public class MPACore
 {
 	public static final String MODID = "modpackaddon";
-	public static final String VERSION = "0.5";
+	public static final String VERSION = "0.6";
 	public static final String NAME = "Modpack Addon";
 
 	@Instance(value = MODID)
@@ -53,14 +55,14 @@ public class MPACore
 	public void load(FMLPreInitializationEvent event)
 	{
 		logger = event.getModLog();
+		
+		ConfigLoader.loadConfigSettings(event.getSuggestedConfigurationFile());
 
 		MPABlocks.loadBlocks();
 		MPAItems.loadItems();
 		MPATools.loadTools();
 		MPAArmor.loadArmor();
 
-		ConfigLoader.loadConfigSettings(event.getSuggestedConfigurationFile());
-		FMLCommonHandler.instance().bus().register(new UpdateNotificationHandler());
 		MinecraftForge.EVENT_BUS.register(new BlockListener());
 		MinecraftForge.EVENT_BUS.register(new PlayerDeathListener());
 		MinecraftForge.EVENT_BUS.register(new PlayerListener());
@@ -71,5 +73,6 @@ public class MPACore
 	{
 		Blocks.hardened_clay.setHardness(0.3F);
 		Blocks.stained_hardened_clay.setHardness(0.3F);
+		FluidContainerRegistry.registerFluidContainer(SolarCraft.LOX, new ItemStack(MPAItems.airTank, 1, 0), new ItemStack(MPAItems.airTank, 1, 1000));
 	}
 }
