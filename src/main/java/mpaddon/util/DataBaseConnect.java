@@ -1,5 +1,7 @@
 package mpaddon.util;
 
+import mpaddon.MPASettings;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -13,6 +15,9 @@ public class DataBaseConnect
 	@SuppressWarnings("resource")
 	public static void sendMessage(String json)
 	{
+		if(MPASettings.statopout)
+			return;
+		
 		HttpClient httpClient = new DefaultHttpClient();
 
 	    try {

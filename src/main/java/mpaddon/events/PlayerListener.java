@@ -20,12 +20,9 @@ public class PlayerListener
 		json.addProperty("Type", "World_Joins");
 		if(MPACore.proxy.isClient())
 		{
-			json.addProperty("User", e.playerUUID);
 			time = System.currentTimeMillis();
+			DataBaseConnect.sendMessage(json.toString());
 		}
-		else
-			json.addProperty("User", "Server");
-		DataBaseConnect.sendMessage(json.toString());
 	}
 
 	@SubscribeEvent
@@ -37,7 +34,6 @@ public class PlayerListener
 		json.addProperty("Type", "TimePlayer");
 		if(MPACore.proxy.isClient())
 		{
-			json.addProperty("User", e.playerUUID);
 			long elapsed = System.currentTimeMillis()-time;
 			int h = (int) (elapsed / (60*60*1000));
 			elapsed = elapsed - h*(60*60*1000);
@@ -45,15 +41,13 @@ public class PlayerListener
 			elapsed = elapsed - m*(60*1000);
 			int s = (int) (elapsed / 1000);
 			elapsed = elapsed - s*1000;
-			
+
 			String hr = h<10 ? "0"+h : ""+h;
 			String min = m<10 ? "0"+m : ""+m;
 			String sec = s<10 ? "0"+s : ""+s;
-			
+
 			json.addProperty("Time", hr + ":" + min + ":" + sec);
+			DataBaseConnect.sendMessage(json.toString());
 		}
-		else
-			json.addProperty("User", "Server");
-		DataBaseConnect.sendMessage(json.toString());
 	}
 }

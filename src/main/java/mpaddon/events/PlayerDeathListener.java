@@ -15,10 +15,8 @@ public class PlayerDeathListener
 	{
 		if(e.entity instanceof EntityPlayer)
 		{
-			EntityPlayer player = (EntityPlayer) e.entity;
 			JsonObject json = new JsonObject();
 			json.addProperty("Type", "Death");
-			json.addProperty("User", player.getCommandSenderName());
 			DataBaseConnect.sendMessage(json.toString());
 		}
 	}

@@ -4,6 +4,7 @@ import mpaddon.armor.MPAArmor;
 import mpaddon.blocks.MPABlocks;
 import mpaddon.events.BlockListener;
 import mpaddon.events.PlayerDeathListener;
+import mpaddon.events.PlayerJoinEvent;
 import mpaddon.events.PlayerListener;
 import mpaddon.item.MPAItems;
 import mpaddon.proxy.CommonProxy;
@@ -18,6 +19,7 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 import org.apache.logging.log4j.Logger;
 
 import solarcraft.core.SolarCraft;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -62,6 +64,8 @@ public class MPACore
 		MPAItems.loadItems();
 		MPATools.loadTools();
 		MPAArmor.loadArmor();
+		
+		FMLCommonHandler.instance().bus().register(new PlayerJoinEvent());
 
 		MinecraftForge.EVENT_BUS.register(new BlockListener());
 		MinecraftForge.EVENT_BUS.register(new PlayerDeathListener());
