@@ -15,12 +15,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class PlasticBottle extends Item
 {
-	private IIcon filledBottle;
+	//private IIcon filledBottle;
 
 	public PlasticBottle()
 	{
 		super.setCreativeTab(MPACore.modTab);
 		super.setHasSubtypes(true);
+		super.setUnlocalizedName("Plastic_Bottle");
 	}
 
 	/**

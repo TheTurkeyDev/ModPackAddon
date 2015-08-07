@@ -2,6 +2,8 @@ itemGroup.modpackaddon=Modpack Addon
 
 tile.Forever_Fire.name=Forever Fire
 
+tile.Useless_Coarsed_Dirt.name=Coarse Dirt
+
 tile.Locked_Door_Tier1.name=Locked Door Tier 1
 tile.Locked_Door_Tier2.name=Locked Door Tier 2
 tile.Locked_Door_Tier3.name=Locked Door Tier 3
@@ -22,7 +24,22 @@ item.accessCard5.name=Access Card Tier 5
 
 item.Piece_of_dirt.name=Piece of Dirt
 
-item.Space_Helmet.name=Space Helmet
+item.Basic_Space_Helmet.name=Basic Space Helmet
+item.Basic_Space_Chestplate.name=Basic Space Chestplate
+item.Basic_Space_Leggings.name=Basic Space Leggings
+item.Basic_Space_Boots.name=Basic Space Boots
+
+item.Reinforced_Space_Helmet.name=Reinforced Space Helmet
+item.Reinforced_Space_Chestplate.name=Reinforced Space Chestplate
+item.Reinforced_Space_Leggings.name=Reinforced Space Leggings
+item.Reinforced_Space_Boots.name=Reinforced Space Boots
+
+item.Hardened_Space_Helmet.name=Hardened Space Helmet
+item.Hardened_Space_Chestplate.name=Hardened Space Chestplate
+item.Hardened_Space_Leggings.name=Hardened Space Leggings
+item.Hardened_Space_Boots.name=Hardened Space Boots
 
 item.Clay_Smasher.name=Clay Smasher
 item.Ice_Smasher.name=Ice Smasher
+
+item.Air_Tank.name=Air Tank

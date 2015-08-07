@@ -34,20 +34,17 @@ public class LockedDoor extends BlockDoor
 			int j1 = i1 & 7;
 			j1 ^= 4;
 
-			boolean open = false;
-
 			if((i1 & 8) == 0)
 			{
 				world.setBlockMetadataWithNotify(x, y, z, j1, 2);
 				world.markBlockRangeForRenderUpdate(x, y, z, x, y, z);
-				open = true;
 			}
 			else
 			{
 				world.setBlockMetadataWithNotify(x, y - 1, z, j1, 2);
 				world.markBlockRangeForRenderUpdate(x, y - 1, z, x, y, z);
 			}
-			//String path = DoorRegistry.getSound("pneumatic_door").getSoundPath(open ? DoorState.OPENING : DoorState.CLOSING);
+			//String path = DoorRegistry.getSound("pneumatic_door").getSoundPath(DoorState.OPENING);
 			//world.playSoundEffect(x, y, z, path, 1F, 1F);
 			return true;
 		}
@@ -102,4 +99,9 @@ public class LockedDoor extends BlockDoor
 	{
 		return 0;
 	}
+	
+    public int getMobilityFlag()
+    {
+        return 2;
+    }
 }

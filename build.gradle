@@ -17,12 +17,12 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = ""
+version = "${mod_version}"
 group= "com.turkey.mpaddon"
 archivesBaseName = "ModpackAddon"
 
 minecraft {
-    version = "1.7.10-10.13.3.1403-1.7.10"
+    version = "1.7.10-10.13.4.1448-1.7.10"
 }
 
 dependencies {

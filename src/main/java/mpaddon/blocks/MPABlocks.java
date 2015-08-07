@@ -17,6 +17,10 @@ public class MPABlocks
 	public static Block lockedDoor4;
 	public static Block lockedDoor5;
 	
+	public static Block coarsedDirt;
+	
+	public static Block crate;
+	
 	private static MPARenderingHandler renderingHandler;
 
 	public static void loadBlocks()
@@ -33,11 +37,17 @@ public class MPABlocks
 		lockedDoor4 = new LockedDoor().setBlockName("Locked_Door_Tier4").setBlockTextureName(MPACore.MODID + ":door_tier4");
 		lockedDoor5 = new LockedDoor().setBlockName("Locked_Door_Tier5").setBlockTextureName(MPACore.MODID + ":door_tier5");
 		
+		coarsedDirt = new UselessCoarsedDirt();
+		
+		crate = new CrateBlock();
+		
 		GameRegistry.registerBlock(foreverFire, "Forever_Fire");
 		GameRegistry.registerBlock(lockedDoor1, "Locked_Door_Tier1");
 		GameRegistry.registerBlock(lockedDoor2, "Locked_Door_Tier2");
 		GameRegistry.registerBlock(lockedDoor3, "Locked_Door_Tier3");
 		GameRegistry.registerBlock(lockedDoor4, "Locked_Door_Tier4");
 		GameRegistry.registerBlock(lockedDoor5, "Locked_Door_Tier5");
+		GameRegistry.registerBlock(coarsedDirt, "Useless_Coarsed_Dirt");
+		GameRegistry.registerBlock(crate, "Crate");
 	}
 }

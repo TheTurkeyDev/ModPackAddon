@@ -4,13 +4,16 @@ import mpaddon.MPACore;
 import mpaddon.MPASettings;
 import mpaddon.item.MPAItems;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import tonius.simplyjetpacks.item.ItemPack;
+import tonius.simplyjetpacks.item.ItemPack.ItemJetpack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import enviromine.handlers.EM_StatusManager;
@@ -24,13 +27,6 @@ public class SpaceSuitItemArmor extends ItemArmor
 		super.setUnlocalizedName(unlocalizedName);
 		super.setCreativeTab(MPACore.modTab);
 		super.setTextureName(MPACore.MODID + ":" + unlocalizedName);
-	}
-
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		String itemName = stack.getItem().getUnlocalizedName().replace("item.", "").replace(".name", "");
-		return MPACore.MODID + ":models/armor/" + itemName + ".png";
 	}
 
 	@Override
@@ -49,14 +45,13 @@ public class SpaceSuitItemArmor extends ItemArmor
 				nbt.setByte("TickDelay", (byte) 30);
 
 			for(ItemStack stack : player.inventory.armorInventory)
-				if(!(stack.getItem() instanceof SpaceSuitItemArmor))
+				if(stack == null || !(stack.getItem() instanceof SpaceSuitItemArmor || stack.getItem() instanceof ItemPack))
 					return;
 
 			byte delay = nbt.getByte("TickDelay");
 
 			if(delay == 0)
 			{
-
 				ItemStack tank = null;
 
 				for(ItemStack stack : player.inventory.mainInventory)
@@ -69,9 +64,9 @@ public class SpaceSuitItemArmor extends ItemArmor
 
 				if(tank == null)
 					return;
-				
-				System.out.println("Here");
 
+				player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 60, 9));
+				
 				EnviroDataTracker tracker = EM_StatusManager.lookupTracker(player);
 				if(tracker.airQuality + MPASettings.airReplenish <= 100.0D && tank.getItemDamage() + MPASettings.airReplenish <= tank.getMaxDamage())
 				{
@@ -102,6 +97,12 @@ public class SpaceSuitItemArmor extends ItemArmor
 	{
 		if(armorSlot == 0)
 		{
+			if(entityLiving instanceof EntityPlayer)
+			{
+				EntityPlayer player = (EntityPlayer) entityLiving;
+				if(player.inventory.armorInventory[2] != null && player.inventory.armorInventory[2].getItem() instanceof ItemJetpack)
+					return ModelSpaceCombined.modelCombined;
+			}
 			return ModelSpaceHelmet.modelHelm;
 		}
 		else if(armorSlot == 1)
