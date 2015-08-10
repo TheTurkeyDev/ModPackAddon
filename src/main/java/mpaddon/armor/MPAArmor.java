@@ -29,8 +29,8 @@ public class MPAArmor
 	public static void loadArmor()
 	{
 		basicSpaceSuit = EnumHelper.addArmorMaterial("Basic_Space_Suit", 0, new int[] {1, 3, 2, 1}, 15);
-		reinforcedSpaceSuit = EnumHelper.addArmorMaterial("Reinforced_Space_Suit", 0, new int[] {3, 5, 4, 3}, 15);
-		hardenedSpaceSuit = EnumHelper.addArmorMaterial("Hardened_Space_Suit", 0, new int[] {2, 4, 3, 2}, 15);
+		reinforcedSpaceSuit = EnumHelper.addArmorMaterial("Reinforced_Space_Suit", 0, new int[] {3, 8, 6, 3}, 15);
+		hardenedSpaceSuit = EnumHelper.addArmorMaterial("Hardened_Space_Suit", 0, new int[] {2, 6, 5, 2}, 15);
 		
 		basicSpaceHelm = (new SpaceSuitItemArmor("Basic_Space_Helmet", basicSpaceSuit, 0));
 		basicSpaceChest = (new SpaceSuitItemArmor("Basic_Space_Chestplate", basicSpaceSuit, 1));
