@@ -31,7 +31,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 public class MPACore
 {
 	public static final String MODID = "modpackaddon";
-	public static final String VERSION = "0.7";
+	public static final String VERSION = "0.8";
 	public static final String NAME = "Modpack Addon";
 
 	@Instance(value = MODID)

@@ -1,83 +1,97 @@
 package mpaddon.blocks.containers;
 
-import mpaddon.blocks.tileEntities.CrateTileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
 public class CrateContainer extends Container
 {
-	private IInventory crateInv = new InventoryBasic("Crate", true, 1);
+	private final IInventory inventory;
 
-	public CrateContainer(InventoryPlayer player, CrateTileEntity tileEntity)
+	public CrateContainer(InventoryPlayer player, IInventory inventory)
 	{
-		for (int i = 0; i < 9; i++)
+		this.inventory = inventory;
+		inventory.openInventory();
+		byte b0 = 84;
+		int i;
+
+		for(i = 0; i < inventory.getSizeInventory(); i++)
 		{
-			this.addSlotToContainer(new Slot(player, i, 8 + i * 18, 142));
+			this.addSlotToContainer(new Slot(inventory, i, 80 + (i * 18), 33 + (18 * i))
+			{
+			    public boolean isItemValid(ItemStack stack)
+			    {
+			        return inventory.isItemValidForSlot(this.slotNumber, stack);
+			    }
+			});
 		}
 
-		for (int y = 0; y < 3; y++)
+		for(i = 0; i < 3; i++)
 		{
-			for (int x = 0; x < 9; x++)
+			for(int j = 0; j < 9; j++)
 			{
-				this.addSlotToContainer(new Slot(player, 9 + (9 * y + x), 8 + x * 18, 84 + y * 18));
+				this.addSlotToContainer(new Slot(player, j + i * 9 + 9, 8 + j * 18, i * 18 + b0));
 			}
 		}
 
-		this.addSlotToContainer(new Slot(crateInv, 0, 27, 33));
+		for(i = 0; i < 9; i++)
+		{
+			this.addSlotToContainer(new Slot(player, i, 8 + i * 18, 58 + b0));
+		}
 	}
 
-	@Override
 	public boolean canInteractWith(EntityPlayer p_75145_1_)
 	{
-		return true;
+		return this.inventory.isUseableByPlayer(p_75145_1_);
 	}
 
-	@Override
-	public ItemStack transferStackInSlot(EntityPlayer player, int slot)
+	/**
+	 * Called when a player shift-clicks on a slot. You must override this or you will crash when someone does that.
+	 */
+	public ItemStack transferStackInSlot(EntityPlayer player, int slotNum)
 	{
-		ItemStack stack = null;
-		Slot slotObject = (Slot) inventorySlots.get(slot);
-		//System.out.println(slot);
+		ItemStack itemstack = null;
+		Slot slot = (Slot) this.inventorySlots.get(slotNum);
 
-		// null checks and checks if the item can be stacked (maxStackSize > 1)
-		if (slotObject != null && slotObject.getHasStack())
+		if(slot != null && slot.getHasStack())
 		{
-			ItemStack stackInSlot = slotObject.getStack();
-			stack = stackInSlot.copy();
+			ItemStack itemstack1 = slot.getStack();
+			itemstack = itemstack1.copy();
 
-			// merges the item into player inventory since its in the tileEntity
-			if (slot > 35)
+			if(slotNum < this.inventory.getSizeInventory())
 			{
-				if (!this.mergeItemStack(stackInSlot, 0, 36, true))
+				if(!this.mergeItemStack(itemstack1, this.inventory.getSizeInventory(), this.inventorySlots.size(), true))
+				{
 					return null;
+				}
 			}
-			// places it into the tileEntity is possible since its in the player
-			// inventory
-			else if(slot < 36)
-			{
-				if (!this.mergeItemStack(stackInSlot, 36, 37, false))
-					return null;
-			}
-
-			if (stackInSlot.stackSize == 0)
-			{
-				slotObject.putStack(null);
-			} else
-			{
-				slotObject.onSlotChanged();
-			}
-
-			if (stackInSlot.stackSize == stack.stackSize)
+			else if(!this.mergeItemStack(itemstack1, 0, this.inventory.getSizeInventory(), false))
 			{
 				return null;
 			}
-			slotObject.onPickupFromSlot(player, stackInSlot);
+
+			if(itemstack1.stackSize == 0)
+			{
+				slot.putStack((ItemStack) null);
+			}
+			else
+			{
+				slot.onSlotChanged();
+			}
 		}
-		return stack;
+
+		return itemstack;
+	}
+
+	/**
+	 * Called when the container is closed.
+	 */
+	public void onContainerClosed(EntityPlayer player)
+	{
+		super.onContainerClosed(player);
+		this.inventory.closeInventory();
 	}
 }

@@ -17,8 +17,8 @@ public class CrateGui extends GuiContainer
 	public CrateGui(InventoryPlayer inventory, CrateTileEntity tileEntity, World world)
 	{
 		super(new CrateContainer(inventory, tileEntity));
-		this.xSize = 256;
-		this.ySize = 256;
+		this.xSize = 176;
+		this.ySize = 165;
 	}
 
 	@Override

@@ -14,5 +14,6 @@ public class UselessCoarsedDirt extends Block
 		super.setBlockTextureName(MPACore.MODID + ":coarse_dirt");
 		super.setStepSound(soundTypeGravel);
 		super.setHardness(0.5f);
+		super.setHarvestLevel("shovel", 0);
 	}
 }
