@@ -5,6 +5,7 @@ import java.util.Random;
 
 import mpaddon.item.AccessCard;
 import mpaddon.item.MPAItems;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,7 +21,7 @@ public class LockedDoor extends BlockDoor
 
 	public LockedDoor()
 	{
-		super(Material.circuits);
+		super(Material.iron);
 		super.setHardness(-1f);
 		super.setStepSound(soundTypeMetal);
 		super.disableStats();
@@ -103,5 +104,10 @@ public class LockedDoor extends BlockDoor
     public int getMobilityFlag()
     {
         return 2;
+    }
+    
+    public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
+    {
+    	
     }
 }
