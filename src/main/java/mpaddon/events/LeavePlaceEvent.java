@@ -1,5 +1,6 @@
 package mpaddon.events;
 
+import mpaddon.blocks.MPABlocks;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -22,44 +23,39 @@ public class LeavePlaceEvent
 				boolean placed = false;
 				if(e.face == 0)
 				{
-					e.world.setBlock(e.x, e.y - 1, e.z, Blocks.leaves);
-					e.world.getBlock(e.x, e.y - 1, e.z).beginLeavesDecay(e.world, e.x, e.y - 1, e.z);
+					e.world.setBlock(e.x, e.y - 1, e.z, MPABlocks.leave);
 					placed = true;
 				}
 				else if(e.face == 1)
 				{
-					e.world.setBlock(e.x, e.y + 1, e.z, Blocks.leaves);
-					e.world.getBlock(e.x, e.y + 1, e.z).beginLeavesDecay(e.world,e.x, e.y + 1, e.z);
+					e.world.setBlock(e.x, e.y + 1, e.z, MPABlocks.leave);
 					placed = true;
 				}
 				else if(e.face == 2)
 				{
-					e.world.setBlock(e.x, e.y, e.z - 1, Blocks.leaves);
-					e.world.getBlock(e.x, e.y, e.z - 1).beginLeavesDecay(e.world, e.x, e.y, e.z - 1);
+					e.world.setBlock(e.x, e.y, e.z - 1, MPABlocks.leave);
 					placed = true;
 				}
 				else if(e.face == 3)
 				{
-					e.world.setBlock(e.x, e.y, e.z + 1, Blocks.leaves);
-					e.world.getBlock(e.x, e.y, e.z + 1).beginLeavesDecay(e.world, e.x, e.y, e.z + 1);
+					e.world.setBlock(e.x, e.y, e.z + 1, MPABlocks.leave);
 					placed = true;
 				}
 				else if(e.face == 4)
 				{
-					e.world.setBlock(e.x - 1, e.y, e.z, Blocks.leaves);
-					e.world.getBlock(e.x - 1, e.y, e.z).beginLeavesDecay(e.world, e.x - 1, e.y, e.z);
+					e.world.setBlock(e.x - 1, e.y, e.z, MPABlocks.leave);
 					placed = true;
 				}
 				else if(e.face == 5)
 				{
-					e.world.setBlock(e.x + 1, e.y, e.z, Blocks.leaves);
-					e.world.getBlock(e.x + 1, e.y, e.z).beginLeavesDecay(e.world, e.x + 1, e.y, e.z);
+					e.world.setBlock(e.x + 1, e.y, e.z, MPABlocks.leave);
 					placed = true;
 				}
 				
 				if(placed)
 				{
 					e.setCanceled(true);
+					e.entityPlayer.inventory.getCurrentItem().stackSize--;
 				}
 			}
 		}

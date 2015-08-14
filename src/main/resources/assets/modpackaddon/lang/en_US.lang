@@ -5,6 +5,9 @@ tile.Crate.name=Crate
 
 tile.Useless_Coarsed_Dirt.name=Coarse Dirt
 
+tile.Leave_Block.name=Leaves
+tile.Dead_Leave_Block.name=Dead Leaves
+
 tile.Locked_Door_Tier1.name=Locked Door Tier 1
 tile.Locked_Door_Tier2.name=Locked Door Tier 2
 tile.Locked_Door_Tier3.name=Locked Door Tier 3

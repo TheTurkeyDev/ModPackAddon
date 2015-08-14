@@ -4,6 +4,7 @@ import mpaddon.armor.MPAArmor;
 import mpaddon.blocks.MPABlocks;
 import mpaddon.client.gui.MPAGuiHandler;
 import mpaddon.events.BlockListener;
+import mpaddon.events.LeavePlaceEvent;
 import mpaddon.item.MPAItems;
 import mpaddon.proxy.CommonProxy;
 import mpaddon.tools.MPATools;
@@ -30,7 +31,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 public class MPACore
 {
 	public static final String MODID = "modpackaddon";
-	public static final String VERSION = "0.9";
+	public static final String VERSION = "1.0";
 	public static final String NAME = "Modpack Addon";
 
 	@Instance(value = MODID)
@@ -65,7 +66,7 @@ public class MPACore
 		MPAArmor.loadArmor();
 
 		MinecraftForge.EVENT_BUS.register(new BlockListener());
-		//MinecraftForge.EVENT_BUS.register(new LeavePlaceEvent());
+		MinecraftForge.EVENT_BUS.register(new LeavePlaceEvent());
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new MPAGuiHandler());
 	}
 

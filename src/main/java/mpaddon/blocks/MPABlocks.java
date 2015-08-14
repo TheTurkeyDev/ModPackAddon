@@ -20,6 +20,9 @@ public class MPABlocks
 	
 	public static Block coarsedDirt;
 	
+	public static Block leave;
+	public static Block deadLeave;
+	
 	public static Block crate;
 	
 	private static MPARenderingHandler renderingHandler;
@@ -40,6 +43,9 @@ public class MPABlocks
 		
 		coarsedDirt = new UselessCoarsedDirt();
 		
+		leave = new CustomLeaves();
+		deadLeave = new CustomDeadLeaves();
+		
 		crate = new CrateBlock();
 		GameRegistry.registerTileEntity(CrateTileEntity.class, coarsedDirt.getUnlocalizedName());
 		
@@ -50,6 +56,8 @@ public class MPABlocks
 		GameRegistry.registerBlock(lockedDoor4, "Locked_Door_Tier4");
 		GameRegistry.registerBlock(lockedDoor5, "Locked_Door_Tier5");
 		GameRegistry.registerBlock(coarsedDirt, "Useless_Coarsed_Dirt");
+		GameRegistry.registerBlock(leave, "Leave_Block");
+		GameRegistry.registerBlock(deadLeave, "Dead_Leave_Block");
 		GameRegistry.registerBlock(crate, "Crate");
 	}
 }
