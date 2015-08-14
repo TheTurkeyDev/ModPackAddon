@@ -1,6 +1,7 @@
 package mpaddon.blocks;
 
 import mpaddon.MPACore;
+import mpaddon.blocks.tileEntities.CrateTileEntity;
 import mpaddon.renderer.MPARenderingHandler;
 import net.minecraft.block.Block;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -40,6 +41,7 @@ public class MPABlocks
 		coarsedDirt = new UselessCoarsedDirt();
 		
 		crate = new CrateBlock();
+		GameRegistry.registerTileEntity(CrateTileEntity.class, coarsedDirt.getUnlocalizedName());
 		
 		GameRegistry.registerBlock(foreverFire, "Forever_Fire");
 		GameRegistry.registerBlock(lockedDoor1, "Locked_Door_Tier1");
