@@ -22,7 +22,11 @@ group= "com.turkey.mpaddon"
 archivesBaseName = "ModpackAddon"
 
 minecraft {
-    version = "1.7.10-10.13.4.1448-1.7.10"
+	version = "${mc_version}-${forge_version}"
+	
+	replace "@VERSION@", project.version
+    replaceIn "MPACore.java"
+	replaceIn "mcmod.info"
 }
 
 dependencies {

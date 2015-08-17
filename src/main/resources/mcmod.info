@@ -3,7 +3,7 @@
   "modid": "modpackaddon",
   "name": "Modpack Addon",
   "description": "An mod addon to Aftermath",
-  "version": "1.0",
+  "version": "@VERSION@",
   "mcversion": "1.7.10",
   "url": "",
   "updateUrl": "",
