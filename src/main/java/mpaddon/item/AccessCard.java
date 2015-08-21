@@ -14,7 +14,7 @@ import net.minecraft.util.IIcon;
 public class AccessCard extends Item
 {
     @SideOnly(Side.CLIENT)
-    private IIcon[] icons;
+    private IIcon[] icons = new IIcon[5];;
 
     public AccessCard()
     {
@@ -22,7 +22,6 @@ public class AccessCard extends Item
         this.setMaxDamage(0);
         this.maxStackSize = 1;
         this.setCreativeTab(MPACore.modTab);
-        icons = new IIcon[5];
     }
 
     /**
