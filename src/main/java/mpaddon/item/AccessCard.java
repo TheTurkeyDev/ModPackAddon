@@ -14,7 +14,7 @@ import net.minecraft.util.IIcon;
 public class AccessCard extends Item
 {
     @SideOnly(Side.CLIENT)
-    private IIcon[] icons = new IIcon[5];;
+    private IIcon[] icons;
 
     public AccessCard()
     {
@@ -60,6 +60,7 @@ public class AccessCard extends Item
     public void registerIcons(IIconRegister register)
     {
         super.registerIcons(register);
+    	icons = new IIcon[5];
         icons[0] = register.registerIcon(MPACore.MODID + ":accessCard1");
         icons[1] = register.registerIcon(MPACore.MODID + ":accessCard2");
         icons[2] = register.registerIcon(MPACore.MODID + ":accessCard3");
