@@ -65,8 +65,8 @@ public class SpaceSuitItemArmor extends ItemArmor
 				if(tank == null)
 					return;
 
-				player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 60, 9));
-				
+				player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 60, 9, true));
+
 				EnviroDataTracker tracker = EM_StatusManager.lookupTracker(player);
 				if(tracker.airQuality + MPASettings.airReplenish <= 100.0D && tank.getItemDamage() + MPASettings.airReplenish <= tank.getMaxDamage())
 				{

@@ -1,8 +1,5 @@
 package mpaddon.events;
 
-import org.apache.logging.log4j.Level;
-
-import mpaddon.MPACore;
 import mpaddon.blocks.MPABlocks;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -13,7 +10,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-public class LeavePlaceEvent
+public class LeafPlaceEvent
 {
 	@SubscribeEvent
 	public void placeEvent(PlayerInteractEvent e)
@@ -31,15 +28,7 @@ public class LeavePlaceEvent
 				Block block = e.world.getBlock(e.x, e.y, e.z);
 				boolean placed = false;
 
-				boolean activated = true;
-
-				try
-				{
-					activated = block.onBlockActivated(e.world, e.x, e.y, e.y, e.entityPlayer, e.face, 0F, 0F, 0F);
-				} catch(NullPointerException ex)
-				{
-					MPACore.logger.log(Level.ERROR, "SOMEONE DONE MESSED UP! " + ex.getMessage());
-				}
+				boolean activated = block.onBlockActivated(e.world, e.x, e.y, e.z, e.entityPlayer, e.face, 0F, 0F, 0F);
 
 				if(activated)
 				{
