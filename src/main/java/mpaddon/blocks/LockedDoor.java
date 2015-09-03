@@ -62,15 +62,15 @@ public class LockedDoor extends BlockDoor
 		if(!(currentItem.getItem() instanceof AccessCard))
 			return false;
 
-		if(this.getUnlocalizedName().equalsIgnoreCase("tile.Locked_Door_Tier1") && currentItem.getItemDamage() == 0)
+		if(this.getUnlocalizedName().equalsIgnoreCase("tile.Locked_Door_Tier1") && currentItem.getItemDamage() >= 0)
 			return true;
-		if(this.getUnlocalizedName().equalsIgnoreCase("tile.Locked_Door_Tier2") && currentItem.getItemDamage() == 1)
+		if(this.getUnlocalizedName().equalsIgnoreCase("tile.Locked_Door_Tier2") && currentItem.getItemDamage() >= 1)
 			return true;
-		if(this.getUnlocalizedName().equalsIgnoreCase("tile.Locked_Door_Tier3") && currentItem.getItemDamage() == 2)
+		if(this.getUnlocalizedName().equalsIgnoreCase("tile.Locked_Door_Tier3") && currentItem.getItemDamage() >= 2)
 			return true;
-		if(this.getUnlocalizedName().equalsIgnoreCase("tile.Locked_Door_Tier4") && currentItem.getItemDamage() == 3)
+		if(this.getUnlocalizedName().equalsIgnoreCase("tile.Locked_Door_Tier4") && currentItem.getItemDamage() >= 3)
 			return true;
-		if(this.getUnlocalizedName().equalsIgnoreCase("tile.Locked_Door_Tier5") && currentItem.getItemDamage() == 4)
+		if(this.getUnlocalizedName().equalsIgnoreCase("tile.Locked_Door_Tier5") && currentItem.getItemDamage() >= 4)
 			return true;
 
 		return false;

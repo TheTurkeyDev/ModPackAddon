@@ -1,5 +1,6 @@
 package mpaddon.events;
 
+import minechem.MinechemItemsRegistration;
 import mpaddon.blocks.MPABlocks;
 import mpaddon.tools.MPATools;
 import net.minecraft.block.Block;
@@ -40,7 +41,7 @@ public class BlockListener
 			}
 			else if (b == Blocks.ice || b == Blocks.packed_ice) 
 			{
-				if(e.getPlayer().inventory.getCurrentItem() != null && e.getPlayer().inventory.getCurrentItem().getItem().equals(MPATools.iceSmash))
+				if(e.getPlayer().inventory.getCurrentItem() != null && (e.getPlayer().inventory.getCurrentItem().getItem().equals(MPATools.iceSmash) || e.getPlayer().inventory.getCurrentItem().getItem().equals(MinechemItemsRegistration.polytool)))
 				{
 					e.world.spawnEntityInWorld(new EntityItem(e.world,e.x,e.y,e.z,new ItemStack(b,1,e.blockMetadata)));
 					e.world.setBlockToAir(e.x, e.y, e.z);
@@ -79,27 +80,27 @@ public class BlockListener
 		{
 			MovingObjectPosition movingobjectposition = this.getMovingObjectPositionFromPlayer(e.world, e.entityPlayer, true);
 			if (movingobjectposition == null)
-	            return;
-	        else
-	        {
-	        	ItemStack stack = e.entityPlayer.inventory.getCurrentItem();
-	        	World world = e.world;
-	        	EntityPlayer player = e.entityPlayer;
-	            if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
-	            {
-	                int i = movingobjectposition.blockX;
-	                int j = movingobjectposition.blockY;
-	                int k = movingobjectposition.blockZ;
+				return;
+			else
+			{
+				ItemStack stack = e.entityPlayer.inventory.getCurrentItem();
+				World world = e.world;
+				EntityPlayer player = e.entityPlayer;
+				if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
+				{
+					int i = movingobjectposition.blockX;
+					int j = movingobjectposition.blockY;
+					int k = movingobjectposition.blockZ;
 
-	                if (!world.canMineBlock(player, i, j, k))
-	                    return;
-	                if (!player.canPlayerEdit(i, j, k, movingobjectposition.sideHit, stack))
-	                    return;
+					if (!world.canMineBlock(player, i, j, k))
+						return;
+					if (!player.canPlayerEdit(i, j, k, movingobjectposition.sideHit, stack))
+						return;
 
-	                if ((world.getBlock(i, j, k) instanceof BlockFluidEtchingAcid) || (world.getBlock(i, j, k) instanceof BlockFluidEio))
-	                   e.setCanceled(true);
-	            }
-	        }
+					if ((world.getBlock(i, j, k) instanceof BlockFluidEtchingAcid) || (world.getBlock(i, j, k) instanceof BlockFluidEio))
+						e.setCanceled(true);
+				}
+			}
 		}
 	}
 
