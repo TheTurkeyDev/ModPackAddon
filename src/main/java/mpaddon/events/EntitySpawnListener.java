@@ -23,7 +23,6 @@ public class EntitySpawnListener
 		{
 			((EntityWither)e.entity).setCustomNameTag("Devourer");
 			((EntityWither)e.entity).getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(((EntityWither)e.entity).getMaxHealth() * MPASettings.witherHealthMultiplier);
-			((EntityWither)e.entity).setHealth(((EntityWither)e.entity).getMaxHealth());
 		}
 	}
 }
