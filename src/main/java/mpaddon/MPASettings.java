@@ -8,4 +8,5 @@ public class MPASettings
 	public static int randomleafDelay;
 	
 	public static double witherHealthMultiplier;
+	public static double dragonHealthMultiplier;
 }
