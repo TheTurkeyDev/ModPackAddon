@@ -18,6 +18,7 @@ public class CrateBlock extends BlockContainer
 		super.setBlockName("Crate");
 		super.setBlockTextureName(MPACore.MODID + ":crate");
 		super.setCreativeTab(MPACore.modTab);
+		super.setHardness(2);
 	}
 
 	@Override
