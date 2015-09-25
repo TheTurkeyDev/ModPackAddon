@@ -119,4 +119,9 @@ public class SpaceSuitItemArmor extends ItemArmor
 		}
 		return null;
 	}
+	
+	public boolean isItemTool(ItemStack p_77616_1_)
+    {
+        return true;
+    }
 }
