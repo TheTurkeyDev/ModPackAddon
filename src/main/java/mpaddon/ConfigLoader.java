@@ -21,7 +21,7 @@ public class ConfigLoader
 		MPASettings.randomleafDelay = config.getInt("RandomLeafDelay", genCat, 2, 0, 10, "How many random ticks the custom leaf blocks will wait before dying");
 
 		MPASettings.witherHealthMultiplier = config.getFloat("WitherHealthMultiplier", genCat, 1.0f, 1.0f, 10.0f, "Wither health multiplier");
-		MPASettings.dragonHealthMultiplier = config.getFloat("DragonHealthMultiplier", genCat, 1.0f, 1.0f, 10.0f, "Dragon health multiplier");
+		MPASettings.dragonHealthMultiplier = config.getFloat("DragonHealthMultiplier", genCat, 1.0f, 1.0f, 5.0f, "Dragon health multiplier");
 
 		config.save();
 	}
