@@ -44,7 +44,7 @@ public class EntitySpawnListener
 		{
 			((EntityDragon) e.entity).setCustomNameTag("Executioner");
 			((EntityDragon) e.entity).getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(((EntityDragon) e.entity).getMaxHealth() * MPASettings.dragonHealthMultiplier);
-			((EntityDragon) e.entity).setHealth(((EntityDragon) e.entity).getMaxHealth() - 300);
+			((EntityDragon) e.entity).setHealth(((EntityDragon) e.entity).getMaxHealth());
 		}
 	}
 }
