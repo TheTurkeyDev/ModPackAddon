@@ -14,16 +14,6 @@ public class EntitySpawnListener
 	@SubscribeEvent
 	public void onEntitySpawn(EntityJoinWorldEvent e)
 	{
-		long day = (e.world.getWorldInfo().getWorldTime() / 24000L) * 24000L;
-		if(day < 1 && e.entity instanceof EntityMob)
-		{
-			if(e.isCancelable())
-			{
-				e.setCanceled(true);
-				return;
-			}
-		}
-
 		if(e.entity != null && e.entity instanceof EntitySnowman)
 		{
 			if(e.isCancelable())
@@ -33,18 +23,38 @@ public class EntitySpawnListener
 			}
 		}
 
-		if(e.entity instanceof EntityWither)
+		if(!e.entity.getEntityData().hasKey("HealthMultiplied"))
 		{
-			((EntityWither) e.entity).setCustomNameTag("Devourer");
-			((EntityWither) e.entity).getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(((EntityWither) e.entity).getMaxHealth() * MPASettings.witherHealthMultiplier);
-			((EntityWither) e.entity).setHealth(((EntityWither) e.entity).getMaxHealth() - 300);
+			if(!e.entity.getEntityData().getBoolean("HealthMultiplied"))
+			{
+				if(e.entity instanceof EntityWither)
+				{
+					((EntityWither) e.entity).setCustomNameTag("Devourer");
+					double health = ((EntityWither) e.entity).getMaxHealth() * MPASettings.witherHealthMultiplier;
+					((EntityWither) e.entity).getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(health > Integer.MAX_VALUE ? Integer.MAX_VALUE : health);
+					((EntityWither) e.entity).setHealth((float) (health > Integer.MAX_VALUE ? Integer.MAX_VALUE - 300 : health - 300));
+					e.entity.getEntityData().setBoolean("HealthMultiplied", true);
+				}
+
+				if(e.entity instanceof EntityDragon)
+				{
+					((EntityDragon) e.entity).setCustomNameTag("Executioner");
+					double health = ((EntityDragon) e.entity).getMaxHealth() * MPASettings.dragonHealthMultiplier;
+					((EntityDragon) e.entity).getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(health > Integer.MAX_VALUE ? Integer.MAX_VALUE : health);
+					((EntityDragon) e.entity).setHealth((float) (health > Integer.MAX_VALUE ? Integer.MAX_VALUE : health));
+					e.entity.getEntityData().setBoolean("HealthMultiplied", true);
+				}
+			}
 		}
 
-		if(e.entity instanceof EntityDragon)
+		long day = (e.world.getWorldInfo().getWorldTime() / 24000L) * 24000L;
+		if(day < 1 && e.entity instanceof EntityMob)
 		{
-			((EntityDragon) e.entity).setCustomNameTag("Executioner");
-			((EntityDragon) e.entity).getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(((EntityDragon) e.entity).getMaxHealth() * MPASettings.dragonHealthMultiplier);
-			((EntityDragon) e.entity).setHealth(((EntityDragon) e.entity).getMaxHealth());
+			if(e.isCancelable())
+			{
+				e.setCanceled(true);
+				return;
+			}
 		}
 	}
 }
