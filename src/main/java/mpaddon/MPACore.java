@@ -6,6 +6,7 @@ import mpaddon.client.gui.MPAGuiHandler;
 import mpaddon.events.BlockListener;
 import mpaddon.events.EntitySpawnListener;
 import mpaddon.events.LeafPlaceEvent;
+import mpaddon.events.SpawnEvent;
 import mpaddon.item.MPAItems;
 import mpaddon.proxy.CommonProxy;
 import mpaddon.tools.MPATools;
@@ -19,6 +20,7 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 import org.apache.logging.log4j.Logger;
 
 import solarcraft.core.SolarCraft;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -69,6 +71,8 @@ public class MPACore
 		MinecraftForge.EVENT_BUS.register(new BlockListener());
 		MinecraftForge.EVENT_BUS.register(new LeafPlaceEvent());
 		MinecraftForge.EVENT_BUS.register(new EntitySpawnListener());
+		MinecraftForge.EVENT_BUS.register(new SpawnEvent());
+		FMLCommonHandler.instance().bus().register(new SpawnEvent());
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new MPAGuiHandler());
 	}
 
