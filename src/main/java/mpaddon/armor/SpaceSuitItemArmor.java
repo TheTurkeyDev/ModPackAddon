@@ -1,9 +1,14 @@
 package mpaddon.armor;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import enviromine.handlers.EM_StatusManager;
+import enviromine.trackers.EnviroDataTracker;
 import mpaddon.MPACore;
 import mpaddon.MPASettings;
 import mpaddon.item.MPAItems;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
@@ -14,10 +19,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import tonius.simplyjetpacks.item.ItemPack;
 import tonius.simplyjetpacks.item.ItemPack.ItemJetpack;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import enviromine.handlers.EM_StatusManager;
-import enviromine.trackers.EnviroDataTracker;
 
 public class SpaceSuitItemArmor extends ItemArmor
 {
@@ -92,6 +93,37 @@ public class SpaceSuitItemArmor extends ItemArmor
 		}
 	}
 
+	@Override
+	@SideOnly(Side.CLIENT)
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+	{
+		if(slot == 0)
+		{
+			if(entity instanceof EntityPlayer)
+			{
+				EntityPlayer player = (EntityPlayer) entity;
+				if(player.inventory.armorInventory[2] != null && player.inventory.armorInventory[2].getItem() instanceof ItemJetpack)
+					return MPACore.MODID + ":models/armor/Space_Combined.png";
+			}
+			if(stack.getItemDamage() == 1)
+				return MPACore.MODID + ":models/armor/Space_Helmet_Pirate.png";
+			return MPACore.MODID + ":models/armor/Space_Helmet.png";
+		}
+		else if(slot == 1)
+		{
+			return MPACore.MODID + ":models/armor/Space_Chestplate.png";
+		}
+		else if(slot == 2)
+		{
+			return MPACore.MODID + ":models/armor/Space_Leggings.png";
+		}
+		else if(slot == 3)
+		{
+			return MPACore.MODID + ":models/armor/Space_Boots.png";
+		}
+		return null;
+	}
+
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot)
 	{
@@ -103,6 +135,8 @@ public class SpaceSuitItemArmor extends ItemArmor
 				if(player.inventory.armorInventory[2] != null && player.inventory.armorInventory[2].getItem() instanceof ItemJetpack)
 					return ModelSpaceCombined.modelCombined;
 			}
+			if(itemStack.getItemDamage() == 1)
+				return ModelSpaceHelmet.pirateModelHelm;
 			return ModelSpaceHelmet.modelHelm;
 		}
 		else if(armorSlot == 1)
@@ -119,9 +153,9 @@ public class SpaceSuitItemArmor extends ItemArmor
 		}
 		return null;
 	}
-	
+
 	public boolean isItemTool(ItemStack p_77616_1_)
-    {
-        return true;
-    }
+	{
+		return true;
+	}
 }
